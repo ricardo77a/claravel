@@ -5,6 +5,12 @@
 
 @section('contenido')
 
+	<div class="row">
+		<div class="col s12">
+			<a href="{{ route('categorias.create') }}" class="btn green darken-4 waves-effect waves-light">Crear nueva categoría</a>
+		</div>
+	</div>
+
 	<table>
 		<thead>
 			<th>Id</th>
@@ -12,23 +18,29 @@
 			<th>Acciones</th>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure iusto, perferendis obcaecati maxime doloremque quae tenetur autem eaque, nesciunt ipsa, debitis perspiciatis vitae, aut! Voluptatem illum eveniet quo commodi minima.</td>
-				<td width="30%">
-					<div class="row">
-						<div class="col">
-							<a href="" class="btn col">Show</a>
+			@forelse ($categorias as $categoria)
+				<tr>
+					<td>{{ $categoria->id }}</td>
+					<td>{{ $categoria->nombre }}</td>
+					<td width="30%">
+						<div class="row">
+							<div class="col">
+								<a href="{{ route('categorias.show', $categoria->id) }}" class="btn waves-effect waves-light col light-blue lighten-2">Show</a>
+							</div>
+							<div class="col">
+								<a href="" class="btn waves-effect waves-light col amber darken-1">Edit</a>
+							</div>
+							<div class="col">
+								<a href="" class="btn waves-effect waves-light col red darken-4">Delete</a>
+							</div>
 						</div>
-						<div class="col">
-							<a href="" class="btn col">Edit</a>
-						</div>
-						<div class="col">
-							<a href="" class="btn col">Delete</a>
-						</div>
-					</div>
-				</td>
-			</tr>
+					</td>
+				</tr>
+			@empty
+				<tr>
+					<td colspan="3" class="center-align">No hay ninguna categoría</td>
+				</tr>
+			@endforelse
 		</tbody>
 	</table>
 

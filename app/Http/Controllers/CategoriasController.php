@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+use App\Http\Requests\CategoriasRequest;
 
 class CategoriasController extends Controller
 {
@@ -13,9 +15,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $cadena = 'hola desde Categorias Controller';
-        $saludo = 'Buenos días';
-        return view('categorias.index', compact('cadena', 'saludo'));
+        $categorias = Categoria::get();
+        return view('categorias.index', compact('categorias'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -34,9 +35,11 @@ class CategoriasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriasRequest $request)
     {
-        //
+        $categoria = new Categoria($request->all());
+        $categoria->save();
+        return redirect()->route('categorias.index')->with('message_success', 'Se ha creado con éxito la categoría '.$categoria->nombre);
     }
 
     /**
@@ -45,9 +48,10 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Categoria $categoria)
     {
-        //
+        //$categoria = Categoria::FindOrFail($id);
+        return view('categorias.show', compact('categoria'));
     }
 
     /**

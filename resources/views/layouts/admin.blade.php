@@ -20,5 +20,6 @@
 		<footer>
 			@include('layouts.fragments.footer')
 		</footer>
+		@include('notificaciones.notificaciones')
 	</body>
 </html>

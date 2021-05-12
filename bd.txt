@@ -1,0 +1,26 @@
+Usuarios -> Autentificación  ------------  ok
+
+Categorias -> Categoría a la que pertenece la nota
+Nombre
+
+Notas -> Notas que se muestran en el blog
+user_id
+Titulo
+Extracto
+Contenido
+Slug
+imagen_destacada
+fecha
+estatus
+categoria_id
+
+Etiquetas -> Muchas Notas tienen muchas etiquetas
+Nombre
+
+Etiquetas_Notas
+nota_id
+etiqueta_id
+
+Imagenes -> Muchas imagenes pertenecen a una Nota
+nota_id
+ruta

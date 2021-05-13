@@ -3,6 +3,10 @@ Usuarios -> Autentificación  ------------  ok
 Categorias -> Categoría a la que pertenece la nota
 Nombre
 
+
+Etiquetas -> Muchas Notas tienen muchas etiquetas
+Nombre
+
 Notas -> Notas que se muestran en el blog
 user_id
 Titulo
@@ -13,9 +17,6 @@ imagen_destacada
 fecha
 estatus
 categoria_id
-
-Etiquetas -> Muchas Notas tienen muchas etiquetas
-Nombre
 
 Etiquetas_Notas
 nota_id

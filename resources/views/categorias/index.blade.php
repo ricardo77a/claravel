@@ -28,10 +28,14 @@
 								<a href="{{ route('categorias.show', $categoria->id) }}" class="btn waves-effect waves-light col light-blue lighten-2">Show</a>
 							</div>
 							<div class="col">
-								<a href="" class="btn waves-effect waves-light col amber darken-1">Edit</a>
+								<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn waves-effect waves-light col amber darken-1">Edit</a>
 							</div>
 							<div class="col">
-								<a href="" class="btn waves-effect waves-light col red darken-4">Delete</a>
+								<form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST">
+									@method('DELETE')
+									@csrf
+									<button class="btn waves-effect waves-light col red darken-4">Delete</button>
+								</form>
 							</div>
 						</div>
 					</td>

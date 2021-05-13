@@ -60,9 +60,9 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categoria $categoria)
     {
-        //
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**
@@ -72,9 +72,11 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriasRequest $request, Categoria $categoria)
     {
-        //
+        $categoria->fill($request->all());
+        $categoria->save();
+        return redirect()->route('categorias.index')->with('message_success', 'Se ha editado con éxito la categoría '.$categoria->nombre);
     }
 
     /**
@@ -83,8 +85,9 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->delete();
+        return redirect()->back()->with('message_success', 'Se ha eliminado con éxito la categoría '.$categoria->nombre);
     }
 }

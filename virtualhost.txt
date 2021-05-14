@@ -1,7 +1,8 @@
 chown -R www-data.www-data /var/www/html/blog
 chmod -R 755 /var/www/html/blog
 chmod -R 777 /var/www/html/blog/storage
-mv .env.example .env
+cp .env.example .env
+composer install
 php artisan key:generate
 sudo nano /etc/apache2/sites-available/blog.test.conf
 

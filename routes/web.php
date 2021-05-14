@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\EtiquetasController;
+use App\Http\Controllers\NotasController;
 
 
 /*
@@ -25,7 +27,8 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('categorias', CategoriasController::class);
-//Route::get('/categorias/index', [CategoriasController::class, 'index']);
+Route::resource('etiquetas', EtiquetasController::class);
+Route::resource('notas', NotasController::class);
 
 
 require __DIR__.'/auth.php';

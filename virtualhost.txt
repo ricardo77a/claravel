@@ -1,0 +1,22 @@
+chown -R www-data.www-data /var/www/html/blog
+chmod -R 755 /var/www/html/blog
+chmod -R 777 /var/www/html/blog/storage
+mv .env.example .env
+php artisan key:generate
+sudo nano /etc/apache2/sites-available/blog.test.conf
+
+<VirtualHost *:80>
+	ServerAdmin ricardo.arredondo@zacatecas.gob.mx
+	ServerName blog.test
+	DocumentRoot /var/www/html/blog/public
+	<Directory /var/www/html/blog>
+	    Options Indexes FollowSymLinks
+	    AllowOverride All
+	    Require all granted
+	</Directory>
+</VirtualHost>
+
+
+sudo ln -s /etc/apache2/sites-available/blog.test.conf /etc/apache2/sites-enabled/blog.test.conf
+
+sudo systemctl restart apache2

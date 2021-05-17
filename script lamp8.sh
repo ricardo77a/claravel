@@ -127,7 +127,7 @@ sudo apt-get install -y php8.0-pgsql
 sudo apt-get install -y php8.0-xsl
 sudo apt-get install -y php8.0-bcmath
 sudo apt-get install -y php-zip
-sudo apt-get install unzip
+sudo apt-get install -y unzip
 sudo apt-get install -y openssl
 
 sudo apt-get -y install libapache2-mod-php8.0

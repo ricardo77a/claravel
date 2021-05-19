@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EtiquetasController;
 use App\Http\Controllers\NotasController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -17,9 +18,9 @@ use App\Http\Controllers\NotasController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/{slug}/nota', [HomeController::class, 'ver'])->name('ver.nota');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +30,9 @@ Route::get('/dashboard', function () {
 Route::resource('categorias', CategoriasController::class);
 Route::resource('etiquetas', EtiquetasController::class);
 Route::resource('notas', NotasController::class);
+Route::get('/notas/{nota}/estatus', [NotasController::class, 'estatus'])->name('notas.estatus');
+
+//Route::post('/login', [ApiAuthController::class, 'login']);
 
 
 require __DIR__.'/auth.php';

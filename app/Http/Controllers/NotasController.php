@@ -33,13 +33,15 @@ class NotasController extends Controller
         //$fecha = \Carbon\Carbon::parse($nota->fecha);
         $nota->save();
 
+
         if ($request->file('imagen_destacada')) {
-            /*Lugar donde guardaré la imagen*/
+            /*Lugar donde guindeardindearé la imagen*/
             $path = 'public/posts/'.$nota->id;
             /*Imagen a guardar*/
             $archivo = $request->file('imagen_destacada');
             /*Guarda el archivo con storeAs en el Path, con el nombre imagen_destacada y con la extensión */
             $ruta = $archivo->storeAs($path, 'imagen_destacada'.'.'.$archivo->clientExtension());
+            $nota->imagen_destacada = $ruta;
             $nota->save();
         }
 
@@ -64,10 +66,19 @@ class NotasController extends Controller
     }
     public function update(Request $request, Nota $nota)
     {
-        dd($nota);
+        dd($nota, 'pendiente');
     }
     public function destroy(Nota $nota)
     {
-        dd($nota);
+        $etiquetas = EtiquetaNota::where('nota_id', $nota->id)->delete();
+        $nota->delete();
+        return redirect()->route('notas.index')->with('message_success', 'Se ha eliminado la nota con éxito.');
+    }
+
+    public function estatus(Nota $nota)
+    {
+        ($nota->estatus == 1) ? $nota->estatus = 0 : $nota->estatus = 1;
+        $nota->save();
+        return redirect()->back()->with('message_success', 'Has cambiado el estatus de la nota '.$nota->titulo.'.');
     }
 }

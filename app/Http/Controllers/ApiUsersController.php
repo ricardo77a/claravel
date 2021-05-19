@@ -17,6 +17,7 @@ class ApiUsersController extends Controller
     public function store(ApiUsersRequest $request)
     {
         $user = new User($request->all());
+        $user->password = bcrypt($request->password);
         $user->save();
         return response($user);
     }
@@ -29,12 +30,17 @@ class ApiUsersController extends Controller
     public function update(Request $request, User $user)
     {
         $user->fill($request->all());
+        $user->password = bcrypt($request->password);
         $user->save();
         return response()->json($user);
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::Find($id);
+        if (is_null($user)) {
+            return response(['error' => 'No se encontró al usuario'], 401);
+        }
         $user->delete();
         return response()->json($user);
     }

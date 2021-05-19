@@ -73,7 +73,7 @@ sudo sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 ROOT_DB_PASSWORD="root"
 #SQL="GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 #sudo mysql -u root -p${ROOT_DB_PASSWORD} -e "${SQL}"
-CREATE="CREATE USER 'vagrant'@'%' IDENTIFIED BY 'vagrant'; "
+CREATE="CREATE USER 'vagrant'@'%' IDENTIFIED BY 'vagrant';"
 GRANT="GRANT ALL PRIVILEGES ON *.* TO 'vagrant'@'%' IDENTIFIED BY 'vagrant'; "
 FLUSH="FLUSH PRIVILEGES;"
 sudo mysql -u root -p${ROOT_DB_PASSWORD} -e "${CREATE}"

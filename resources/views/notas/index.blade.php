@@ -14,6 +14,7 @@
 			<th>Nota</th>
 			<th class="center-align">Imagen destacada</th>
 			<th class="center-align">Estatus</th>
+			<th class="center-align">Imagenes</th>
 			<th colspan="3" class="center-align" width="30%">Acciones</th>
 		</thead>
 		<tbody>
@@ -27,6 +28,11 @@
 					<td class="center-align">
 						<a href="{{ route('notas.estatus', $nota->id) }}" class="btn btn-small waves-effect waves-light col {{ ($nota->estatus == 1) ? 'green darken-4' : 'red darken-4' }}">
 							{{ $nota->status }}
+						</a>
+					</td>
+					<td width="10%">
+						<a href="{{ route('notas.imagenes', $nota->id) }}" class="btn btn-small waves-effect waves-light col light-dark lighten-2">
+							Imágenes
 						</a>
 					</td>
 					<td width="10%">

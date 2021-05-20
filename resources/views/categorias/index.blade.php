@@ -25,16 +25,20 @@
 					<td width="30%">
 						<div class="row">
 							<div class="col">
-								<a href="{{ route('categorias.show', $categoria->id) }}" class="btn waves-effect waves-light col light-blue lighten-2">Show</a>
+								<a href="{{ route('categorias.show', $categoria->id) }}" class="btn waves-effect waves-light col light-blue lighten-2">
+									<i class="small material-icons">remove_red_eye</i>
+								</a>
 							</div>
 							<div class="col">
-								<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn waves-effect waves-light col amber darken-1">Edit</a>
+								<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn waves-effect waves-light col amber darken-1">
+									<i class="small material-icons">edit</i>
+								</a>
 							</div>
 							<div class="col">
 								<form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST">
 									@method('DELETE')
 									@csrf
-									<button class="btn waves-effect waves-light col red darken-4">Delete</button>
+									<button class="btn waves-effect waves-light col red darken-4"><i class="small material-icons">delete</i></button>
 								</form>
 							</div>
 						</div>

@@ -31,6 +31,13 @@ Route::resource('categorias', CategoriasController::class);
 Route::resource('etiquetas', EtiquetasController::class);
 Route::resource('notas', NotasController::class);
 Route::get('/notas/{nota}/estatus', [NotasController::class, 'estatus'])->name('notas.estatus');
+Route::get('/nota/{nota}/imagenes', [NotasController::class, 'imagenes'])->name('notas.imagenes');
+Route::post('/nota/{nota}/cargar/imagenes', [NotasController::class, 'imagenes'])->name('notas.cargar.imagenes');
+
+Route::post('/dropzone/upload', [NotasController::class, 'upload'])->name('dropzone.upload');
+Route::get('/dropzone/fetch', [NotasController::class, 'fetch'])->name('dropzone.fetch');
+Route::get('/dropzone/delete', [NotasController::class, 'delete'])->name('dropzone.delete');
+
 
 //Route::post('/login', [ApiAuthController::class, 'login']);
 

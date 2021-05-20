@@ -5,7 +5,14 @@
 			<li><a href="{{ route('categorias.index') }}">Categorias</a></li>
 			<li><a href="{{ route('etiquetas.index') }}">Etiquetas</a></li>
 			<li><a href="{{ route('notas.index') }}">Notas</a></li>
-			<li><a href="#">Cerrar sesión</a></li>
+			<li>
+		        <a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+		            Cerrar Sesión
+		        </a>
+		        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		          	@csrf
+		        </form>
+			</li>
 		</ul>
 	</div>
 </nav>

@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EtiquetasController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GetApisController;
+use App\Http\Controllers\GetApiUsersController;
 
 
 /*
@@ -34,12 +36,21 @@ Route::get('/notas/{nota}/estatus', [NotasController::class, 'estatus'])->name('
 Route::get('/nota/{nota}/imagenes', [NotasController::class, 'imagenes'])->name('notas.imagenes');
 Route::post('/nota/{nota}/cargar/imagenes', [NotasController::class, 'imagenes'])->name('notas.cargar.imagenes');
 
-Route::post('/dropzone/upload', [NotasController::class, 'upload'])->name('dropzone.upload');
-Route::get('/dropzone/fetch', [NotasController::class, 'fetch'])->name('dropzone.fetch');
-Route::get('/dropzone/delete', [NotasController::class, 'delete'])->name('dropzone.delete');
+
+Route::get('/get/api', [GetApisController::class, 'get'])->name('get.api');
+Route::get('/get/api/one', [GetApisController::class, 'getOne'])->name('get.api.one');
+Route::get('/post/api', [GetApisController::class, 'post'])->name('post.api');
+Route::get('/put/api', [GetApisController::class, 'put'])->name('put.api');
+Route::get('/delete/api', [GetApisController::class, 'delete'])->name('delete.api');
 
 
-//Route::post('/login', [ApiAuthController::class, 'login']);
+Route::get('/get/register', [GetApiUsersController::class, 'getRegister'])->name('get.register');
+
+Route::get('/get/users', [GetApiUsersController::class, 'getUsers'])->name('get.users');
+Route::get('/get/user', [GetApiUsersController::class, 'getUser'])->name('get.user');
+Route::get('/post/user', [GetApiUsersController::class, 'postUser'])->name('post.user');
+Route::get('/put/user', [GetApiUsersController::class, 'putUser'])->name('put.user');
+Route::get('/delete/user', [GetApiUsersController::class, 'deleteUser'])->name('delete.user');
 
 
 require __DIR__.'/auth.php';
